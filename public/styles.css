@@ -24,6 +24,14 @@ body {
   background: #e9e9e9;
   border-radius: 5px;
 }
+#messages li img {
+  display: block;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  max-width: 100%;
+}
+
 #form {
   display: flex;
 }
@@ -44,4 +52,20 @@ button {
 }
 button:hover {
   background: #005fa3;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#form input,
+#form button {
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+
+#username {
+  font-weight: bold;
 }
