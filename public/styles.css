@@ -1,9 +1,23 @@
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* FUENTE ESCALABLE PARA TODO EL SITIO */
 body {
   font-family: Arial, sans-serif;
+  font-size: clamp(14px, 2vw, 18px); /* Escala fluida entre móviles y escritorios */
   background: #f5f5f5;
   margin: 0;
+  padding: 0 10px;
+  line-height: 1.5;
 }
+
+/* CONTENEDOR DE CHAT RESPONSIVO */
 #chat-container {
+  width: 100%;
   max-width: 500px;
   margin: 40px auto;
   background: #fff;
@@ -11,6 +25,8 @@ body {
   box-shadow: 0 0 10px #ccc;
   padding: 20px;
 }
+
+/* LISTA DE MENSAJES */
 #messages {
   list-style: none;
   padding: 0;
@@ -18,54 +34,103 @@ body {
   overflow-y: auto;
   margin-bottom: 15px;
 }
+
 #messages li {
   margin-bottom: 10px;
   padding: 7px 12px;
   background: #e9e9e9;
   border-radius: 5px;
+  word-wrap: break-word;
+  font-size: clamp(14px, 1.8vw, 17px); /* Ligeramente más pequeño que el body */
 }
+
+/* IMÁGENES EN MENSAJES */
 #messages li img {
   display: block;
   margin-top: 5px;
   border: 1px solid #ccc;
   max-height: 200px;
   max-width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
 
+/* FORMULARIO FLEXIBLE */
 #form {
   display: flex;
+  flex-direction: row;
+  gap: 8px;
+  flex-wrap: wrap;
 }
+
+/* INPUT DE TEXTO */
 #input {
-  flex: 1;
+  flex: 1 1 auto;
   padding: 10px;
   border: 1px solid #bbb;
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px;
   outline: none;
+  font-size: clamp(14px, 1.8vw, 17px);
+  min-width: 0;
 }
+
+/* BOTÓN DE ENVIAR */
 button {
   padding: 10px 20px;
   border: none;
   background: #0084ff;
   color: #fff;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: clamp(14px, 2vw, 18px);
+  transition: background 0.2s ease;
+  flex-shrink: 0;
 }
+
 button:hover {
   background: #005fa3;
 }
-#form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
 
-#form input,
-#form button {
-  padding: 10px;
-  border: 1px solid #bbb;
-  border-radius: 5px;
-}
-
+/* NOMBRE DE USUARIO */
 #username {
   font-weight: bold;
+  font-size: clamp(14px, 2vw, 18px);
+}
+
+/* MEDIA QUERY: PANTALLAS PEQUEÑAS COMO IPHONE / ANDROID */
+@media (max-width: 600px) {
+  #chat-container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  #form {
+    flex-direction: column;
+  }
+
+  #input,
+  button {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  button {
+    margin-top: 5px;
+  }
+
+  #messages {
+    max-height: 200px;
+  }
+}
+
+/* MEDIA QUERY EXTRA: TABLETS Y PANTALLAS DE LAPTOP */
+@media (max-width: 1024px) {
+  #chat-container {
+    margin: 30px auto;
+    padding: 18px;
+  }
+
+  #messages {
+    max-height: 250px;
+  }
 }
