@@ -66,12 +66,16 @@ body {
 /* INPUT DE TEXTO */
 #input {
   flex: 1 1 auto;
-  padding: 30px 20px;
+  padding: 10px;
   border: 1px solid #bbb;
   border-radius: 5px;
   outline: none;
   font-size: clamp(14px, 1.8vw, 17px);
   min-width: 0;
+}
+
+#username {
+  padding: 5px 20px;
 }
 
 /* BOTÓN DE ENVIAR */
