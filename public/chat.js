@@ -165,6 +165,7 @@ async function startRecording() {
       confirmButtonColor: '#d33',
       confirmButtonText: 'Okey',
     });
+    alert('No se pudo acceder al micrófono. Por favor, asegúrate de otorgar los permisos necesarios.');
   }
 }
 
@@ -377,7 +378,7 @@ socket.on('chat message', function (msg) {
         fileContainer.appendChild(downloadLink);
         messageContent.appendChild(fileContainer);
         break;
-        
+      
     case 'audio':
       const audioContainer = document.createElement('div');
       audioContainer.className = 'audio-message';

@@ -218,6 +218,10 @@ body.dark-mode .pulse {
 #chat-container {
   max-width: 100%;
   height: 90vh;
+  width: 100%;
+  max-width: 800px;
+  height: 90vh;
+  margin: 0 auto;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -235,6 +239,7 @@ body.dark-mode .pulse {
   padding: 20px;
   overflow-y: auto;
   height: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -368,6 +373,24 @@ button {
   width: 40px;
   height: 40px;
   border: none;
+}
+
+#input:focus, #username:focus {
+  border-color: #0084ff;
+  box-shadow: 0 0 0 2px rgba(0, 132, 255, 0.2);
+}
+
+/* BOTONES */
+.message-actions {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.icon-button, .send-button {
+  width: 40px;
+  height: 40px;
+  border: none;
   border-radius: 50%;
   background: #0084ff;
   color: white;
@@ -441,6 +464,9 @@ button:hover {
   background-color: #0056b3;
 }
 
+#imageInput {
+  display: none;
+}
 
 /* Indicador de grabación */
 .recording-indicator {
@@ -610,6 +636,166 @@ button:hover {
 
   .message-content {
     font-size: 0.9em;
+  }
+}
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+    font-size: 15px;
+  }
+  
+  #chat-container {
+    height: 100vh;
+    max-width: 100%;
+    border-radius: 0;
+  }
+  
+  .chat-header {
+    padding: 12px 15px;
+  }
+  
+  .message {
+    max-width: 85%;
+    padding: 10px 14px;
+    font-size: 0.95em;
+  }
+  
+  .message-time {
+    font-size: 0.65em;
+  }
+  
+  .input-group {
+    padding: 10px;
+  }
+  
+  #input, #username {
+    padding: 10px 14px;
+    font-size: 0.95em;
+  }
+  
+  .icon-button, .send-button {
+    width: 36px;
+    height: 36px;
+    font-size: 1em;
+  }
+  
+  .audio-message {
+    max-width: 220px;
+  }
+  
+  /* Ajustes para iOS */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+    
+    #chat-container {
+      height: 100vh;
+      height: -webkit-fill-available;
+    }
+  }
+}
+
+/* Tablets y móviles en horizontal */
+@media (min-width: 481px) and (max-width: 1024px) {
+  body {
+    padding: 10px;
+  }
+  
+  #chat-container {
+    height: 95vh;
+    max-width: 95%;
+  }
+  
+  .message {
+    max-width: 75%;
+  }
+  
+  .input-group {
+    padding: 12px;
+  }
+}
+
+/* Pantallas grandes (escritorio) */
+@media (min-width: 1025px) {
+  #chat-container {
+    max-width: 900px;
+  }
+}
+
+/* Ajustes específicos para navegadores WebKit (Safari, Chrome en iOS/Android) */
+@supports (-webkit-touch-callout: none) {
+  input, textarea, [contenteditable] {
+    font-size: 16px; /* Evita el zoom automático en iOS */
+  }
+  
+  /* Ajuste para la barra de direcciones en móviles */
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Ajustes para navegadores que no son WebKit (Firefox, Edge) */
+@supports not (-webkit-touch-callout: none) {
+  /* Ajustes específicos para Firefox */
+  @-moz-document url-prefix() {
+    body {
+      scrollbar-width: thin;
+      scrollbar-color: #c1c1c1 #f1f1f1;
+    }
+  }
+  
+  /* Ajustes para Edge */
+  @supports (-ms-ime-align: auto) {
+    body {
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+  }
+}
+
+/* Ajustes para dispositivos con notch (iPhone X, 11, 12, etc.) */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(env(safe-area-inset-left), 10px);
+    padding-right: max(env(safe-area-inset-right), 10px);
+  }
+}
+
+/* Ajustes para modo oscuro en móviles */
+@media (prefers-color-scheme: dark) {
+  body:not(.dark-mode) {
+    background: #121212;
+  }
+  
+  body:not(.dark-mode) #chat-container {
+    background: #1e1e1e;
+    border-color: #333;
+  }
+}
+
+/* Ajustes para impresión */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  #chat-container, #chat-container * {
+    visibility: visible;
+  }
+  
+  #chat-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+  }
+  
+  .chat-header, #form {
+    display: none;
   }
 }
 
