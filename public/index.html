@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#0084ff">
-  <title>Chat con Imágenes y Voz</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0084ff">
+    <title>Chat con Imágenes y Voz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div id="chat-container">
-    <div class="chat-header">
-      <button id="themeToggle" class="theme-toggle" title="Cambiar tema">
-        <i class="fas fa-moon"></i>
-      </button>
-    </div>
-    <ul id="messages"></ul>
-    <form id="form" autocomplete="off">
-      <div class="input-group">
-        <input id="username" placeholder="Tu nombre..." />
-        <div class="message-input-container">
-          <input id="input" placeholder="Escribe tu mensaje..." autocomplete="off" />
-          <div class="message-actions">
-            <label for="imageInput" class="icon-button" title="Enviar imagen">
-              <i class="fas fa-image"></i>
-              <input type="file" id="imageInput" accept="image/*" />
-            </label>
-            <label for="fileInput" class="icon-button" title="Enviar documento">
-              <i class="fas fa-file"></i>
-              <input type="file" id="fileInput" accept="file/*" />
-            </label>
-            <button type="button" id="recordButton" class="icon-button" title="Grabar audio">
-              <i class="fas fa-microphone"></i>
+    <div id="chat-container">
+        <div class="chat-header">
+            <button id="themeToggle" class="theme-toggle" title="Cambiar tema">
+                <i class="fas fa-moon"></i>
             </button>
-            <button type="submit" class="send-button">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </div>
         </div>
-      </div>
-      <div id="recordingIndicator" class="recording-indicator">
-        <div class="pulse"></div>
-        <span>Grabando... <span id="recordingTime">0:00</span></span>
-        <button type="button" id="stopRecording" class="stop-button">
-          <i class="fas fa-stop"></i> Detener
-        </button>
-      </div>
-      <audio id="audioPlayer" style="display: none;"></audio>
-    </form>
-  </div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="chat.js"></script>
+        <ul id="messages"></ul>
+        <form id="form" autocomplete="off">
+            <div class="input-group">
+                <input id="username" placeholder="Tu nombre..." />
+                <div class="message-input-container">
+                    <input id="input" placeholder="Escribe tu mensaje..." autocomplete="off" />
+                    <div class="message-actions">
+                        <label for="imageInput" class="icon-button" title="Enviar imagen">
+                            <i class="fas fa-image"></i>
+                            <input type="file" id="imageInput" accept="image/*" />
+                        </label>
+                        <label for="fileInput" class="icon-button" title="Enviar documento">
+                            <i class="fas fa-file"></i>
+                            <input type="file" id="fileInput" accept="file/*" />
+                        </label>
+                        <button type="button" id="recordButton" class="icon-button" title="Grabar audio">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button type="submit" class="send-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="recordingIndicator" class="recording-indicator">
+                <div class="pulse"></div>
+                <span>Grabando... <span id="recordingTime">0:00</span></span>
+                <button type="button" id="stopRecording" class="stop-button">
+                    <i class="fas fa-stop"></i> Detener
+                </button>
+            </div>
+            <audio id="audioPlayer" style="display: none;"></audio>
+        </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js"></script>
 </body>
+
 </html>
